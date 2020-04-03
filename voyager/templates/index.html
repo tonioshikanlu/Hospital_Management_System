@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>index of svb project</title>
+  </head>
+  <body>
+    <h1>Operations</h1>
+    <ol>
+      <li><a href="/sailors/add">add a sailor</a></li>
+      <li><a href="/boats/add">add a boat</a></li>
+      <li><a href="/voyages/add">add a voyage</a></li>
+    </ol>
+    <h1>Views</h1>
+    <ol>
+      <li><a href="/sailors">sailors</a></li>
+      <li><a href="/boats">boats</a></li>
+      <li><a href="/voyages">voyages</a></li>
+      <li>
+        <form action="/sailors/who-sailed" method=GET>
+          <label>boat name</label>
+          <input name="boat-name"/>
+          <input type=submit value="sailors who sailed boat"/>
+        </form>
+      </li>
+      <li>
+        <form action="/boats/sailed-by" method=GET>
+          <label>sailor name</label>
+          <input name="sailor-name"/>
+          <input type=submit value="boats sailed by"/>
+        </form>
+      </li>
+      <li>
+        <form action="/sailors/who-sailed-on-date" method=GET>
+          <label>date</label>
+          <input name="date"/>
+          <input type=submit value="sailors who sailed on date"/>
+        </form>
+      </li>
+      <li>
+        <form action="/sailors/who-sailed-on-boat-of-color" method=GET>
+          <label>color</label>
+          <input name="color"/>
+          <input type=submit value="sailors who sailed on boat of color"/>
+        </form>
+      </li>
+      <li><a href="/boats/by-popularity">boats by popularity</a></li>
+    </ol>
+  </body>
+</html>
