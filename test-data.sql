@@ -1,5 +1,5 @@
 INSERT INTO Patient
-  (Doc_ID, P_name, DOB, Gender, P_number, P_address, Appointment_ID)
+  (did, P_name, DOB, Gender, P_number, P_address, aid)
 VALUES
   (1, 'John Atkinson', '1967-02-01', 'Male', 2022340258, '1000 enterprise way, NY 30980', 1),
   (2, 'James Sweeney', '1969-12-30', 'Male', 2022340260, '420 Safeway blvd, DC 20001', 2),
@@ -13,13 +13,13 @@ VALUES
   (10, 'Nicki Bee', '2002-04-01', 'Female', 8002340825, '50 shirt blvd, TX. 20059', 10);
 
 INSERT INTO Doctor
-  (P_ID, Doc_name, Doc_number)
+  (pid, Doc_name, Doc_number)
 VALUES
-  (1, 'Dr. Morris Armstrong', 9196061032),
+  (1, 'Dr. Morris Strong', 9196061032),
   (2, 'Dr. Latifa Brown', 2394306448),
   (3, 'Dr. Chad Jackson', 4153290460),
   (4, 'Dr. Cooper Ross', 8106825332),
-  (5, 'Dr. Daniel Manning', 2603658655),
+  (5, 'Dr. Daniel Mang', 2603658655),
   (6, 'Dr. Bolu Brock', 5703809578),
   (7, 'Dr. Paul Garza', 3139350949),
   (8, 'Dr. Kate Taylor', 5173346436),
@@ -27,7 +27,7 @@ VALUES
   (10, 'Dr. Dora Garza', 4048924190);
 
 INSERT INTO Nurse
-  (Doc_ ID, N_name, N_number)
+  (did, N_name, N_number)
 VALUES
   (1, 'Sian Sanchez', 2026061032),
   (2, 'Tre Beasley', 2300006448),
@@ -41,7 +41,7 @@ VALUES
   (10, 'Darcie Connolly', 2024924190);
 
 INSERT INTO Appointments
-  (Doc_ID, Appointment_date, Appointment_time, Appointment_type, room_number)
+  (did, Appointment_date, Appointment_time, Appointment_type, room_number)
 VALUES
   (1, '2020-04-20', '5PM', 'Checkup', 420),
   (2, '2020-05-01', '2:30PM', 'Dental', 240),

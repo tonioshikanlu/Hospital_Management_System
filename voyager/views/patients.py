@@ -7,7 +7,7 @@ from flask import escape
 from voyager.db import get_db, execute
 
 def Patients(conn):
-    return execute(conn, "SELECT p.P_ID, p.Doc_ID, p.P_name, p.DOB, p.Gender, p.P_number, p.P_address, p.Appointment_ID FROM Patient AS p")
+    return execute(conn, "SELECT p.pid, p.did, p.P_name, p.DOB, p.Gender, p.P_number, p.P_address, p.aid FROM Patient AS p")
 
 def views(bp):
     @bp.route("/patients")
