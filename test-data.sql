@@ -1,16 +1,16 @@
 INSERT INTO Patient
-  (did, P_name, DOB, Gender, P_number, P_address, aid)
+  (did, P_name, DOB, Gender, P_number, P_address, medical_history, aid)
 VALUES
-  (1, 'John Atkinson', '1967-02-01', 'Male', 2022340258, '1000 enterprise way, NY 30980', 1),
-  (2, 'James Sweeney', '1969-12-30', 'Male', 2022340260, '420 Safeway blvd, DC 20001', 2),
-  (3, 'Janie Fuentes', '1967-02-11', 'Female', 6462340258, '3636 stone court, AZ 20234', 3),
-  (4, 'Toni Russo', '1997-10-10', 'Male', 6462340264, '43 moon town, DC 20001', 4),
-  (5, 'Ray Mueller', '1967-02-21', 'Male', 7402340258, 'Jackson street, CA 99441', 5),
-  (6, 'Kate Golden', '2000-02-03', 'Female', 7402340268, '439 success road, TX 20059', 6),
-  (7, 'Doe Spade', '1997-11-09', 'Male', 2022340000, '1002 planet earth, CA 99441', 7),
-  (8, 'Amber Adams', '1996-08-23', 'Female', 6462340272, '1020 enterprise way, NY. 30980', 8),
-  (9, 'Rose Mcneil', '1993-09-09', 'Female', 7402340000, '92 cone lane, AZ. 20234', 9),
-  (10, 'Nicki Bee', '2002-04-01', 'Female', 8002340825, '50 shirt blvd, TX. 20059', 10);
+  (1, 'John Atkinson', '1967-02-01', 'Male', 2022340258, '1000 enterprise way, NY 30980', 'Asthmatic', 1),
+  (2, 'James Sweeney', '1969-12-30', 'Male', 2022340260, '420 Safeway blvd, DC 20001', 'Bone Disease', 2),
+  (3, 'Janie Fuentes', '1967-02-11', 'Female', 6462340258, '3636 stone court, AZ 20234', 'Depression', 3),
+  (4, 'Toni Russo', '1997-10-10', 'Male', 6462340264, '43 moon town, DC 20001', 'Heart Attack', 4),
+  (5, 'Ray Mueller', '1967-02-21', 'Male', 7402340258, 'Jackson street, CA 99441', 'Stomach Ulcer', 5),
+  (6, 'Kate Golden', '2000-02-03', 'Female', 7402340268, '439 success road, TX 20059', 'Diabetes Type II', 6),
+  (7, 'Doe Spade', '1997-11-09', 'Male', 2022340000, '1002 planet earth, CA 99441', 'Mental Illness', 7),
+  (8, 'Amber Adams', '1996-08-23', 'Female', 6462340272, '1020 enterprise way, NY. 30980', 'Breast Cancer', 8),
+  (9, 'Rose Mcneil', '1993-09-09', 'Female', 7402340000, '92 cone lane, AZ. 20234', 'Migraines', 9),
+  (10, 'Nicki Bee', '2002-04-01', 'Female', 8002340825, '50 shirt blvd, TX. 20059', 'Asthmatic', 10);
 
 INSERT INTO Doctor
   (pid, Doc_name, Doc_number)

@@ -18,4 +18,4 @@ def views(bp):
     def _doctors():
         with get_db() as conn:
             rows = Doctors(conn)
-        return render_template("table.html", name="doctors", rows=rows)
+        return render_template("table.html", name="Doctors", rows=rows)

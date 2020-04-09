@@ -14,4 +14,4 @@ def views(bp):
     def _nurses():
         with get_db() as conn:
             rows = Nurses(conn)
-        return render_template("table.html", name="nurses", rows=rows)
+        return render_template("table.html", name="Nurses", rows=rows)

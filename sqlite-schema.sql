@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS Patient (
   did INTEGER NOT NULL,
   aid INTEGER,
   P_name TEXT,
+  medical_history TEXT,
   DOB DATE NOT NULL,
   Gender TEXT,
   P_number INTEGER,

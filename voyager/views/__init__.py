@@ -6,9 +6,9 @@ from voyager.views import patients
 from voyager.views import doctors
 from voyager.views import nurses
 from voyager.views import appointments
+from voyager.views import view_med_history
 # from voyager.views import boats_by_popularity
 # from voyager.views import sailors_who_sailed
-# from voyager.views import boat_sailed_by
 # from voyager.views import given_sail_date
 # from voyager.views import given_color
 # from voyager.views import add_sailor
@@ -23,9 +23,9 @@ patients.views(blueprint)
 doctors.views(blueprint)
 nurses.views(blueprint)
 appointments.views(blueprint)
+view_med_history.views(blueprint)
 # boats_by_popularity.views(blueprint)
 # sailors_who_sailed.views(blueprint)
-# boat_sailed_by.views(blueprint)
 # given_sail_date.views(blueprint)
 # given_color.views(blueprint)
 # add_sailor.views(blueprint)

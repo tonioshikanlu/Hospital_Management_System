@@ -15,18 +15,18 @@
       <li><a href="/doctors">Doctor</a></li>
       <li><a href="/nurses">Nurse</a></li>
       <li><a href="/appointments">Appointment</a></li>
+      <li>
+        <form action="/patients/view-med-history" method=GET>
+          <label>Patient's medical history</label>
+          <input name="medical-history"/>
+          <input type=submit value="View medical history"/>
+        </form>
+      </li>
       <!-- <li>
         <form action="/sailors/who-sailed" method=GET>
           <label>boat name</label>
           <input name="boat-name"/>
           <input type=submit value="sailors who sailed boat"/>
-        </form>
-      </li>
-      <li>
-        <form action="/boats/sailed-by" method=GET>
-          <label>sailor name</label>
-          <input name="sailor-name"/>
-          <input type=submit value="boats sailed by"/>
         </form>
       </li>
       <li>
@@ -43,7 +43,7 @@
           <input type=submit value="sailors who sailed on boat of color"/>
         </form>
       </li>
-      <li><a href="/boats/by-popularity">boats by popularity</a></li> -->
+      <li><a href="/boats/by-popularity">boats by popularity</a></li>  -->
     </ol>
   </body>
 </html>
