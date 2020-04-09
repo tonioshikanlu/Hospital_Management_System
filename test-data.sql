@@ -13,18 +13,18 @@ VALUES
   (10, 'Nicki Bee', '2002-04-01', 'Female', 8002340825, '50 shirt blvd, TX. 20059', 'Asthmatic', 10);
 
 INSERT INTO Doctor
-  (pid, Doc_name, Doc_number)
+  (pid, Doc_name, Doc_number, Doc_email, Doc_password)
 VALUES
-  (1, 'Dr. Morris Strong', 9196061032),
-  (2, 'Dr. Latifa Brown', 2394306448),
-  (3, 'Dr. Chad Jackson', 4153290460),
-  (4, 'Dr. Cooper Ross', 8106825332),
-  (5, 'Dr. Daniel Mang', 2603658655),
-  (6, 'Dr. Bolu Brock', 5703809578),
-  (7, 'Dr. Paul Garza', 3139350949),
-  (8, 'Dr. Kate Taylor', 5173346436),
-  (9, 'Dr. Betty Martin', 8434071526),
-  (10, 'Dr. Dora Garza', 4048924190);
+  (1, 'Dr. Morris Strong', 9196061032, 'strong@aol.com', 'pass10'),
+  (2, 'Dr. Latifa Brown', 2394306448, 'brown@aol.com', 'pass11'),
+  (3, 'Dr. Chad Jackson', 4153290460, 'chad@aol.com', 'pass12'),
+  (4, 'Dr. Cooper Ross', 8106825332, 'rossg@aol.com', 'pass13'),
+  (5, 'Dr. Daniel Mang', 2603658655, 'mang@aol.com', 'pass14'),
+  (6, 'Dr. Bolu Brock', 5703809578, 'bolu@aol.com', 'pass15'),
+  (7, 'Dr. Paul Garza', 3139350949, 'paul@aol.com', 'pass16'),
+  (8, 'Dr. Kate Taylor', 5173346436, 'kate@aol.com', 'pass17'),
+  (9, 'Dr. Betty Martin', 8434071526, 'betty@aol.com', 'pass18'),
+  (10, 'Dr. Dora Garza', 4048924190, 'dora@aol.com', 'pass19');
 
 INSERT INTO Nurse
   (did, N_name, N_number)
