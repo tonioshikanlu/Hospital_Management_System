@@ -1,96 +1,150 @@
 import os
 
 from flask import Flask
-import flask_login
-from flask_login import LoginManager, UserMixin, login_required
+
 from voyager import db, views
+from collections import namedtuple
+import flask_login
+from flask import Flask, render_template, request, redirect
+from flask import request, url_for
+from flask import escape
+from flask_login import LoginManager, UserMixin, login_required
+from voyager.db import get_db, execute
+# def create_app(test_config=None):
+#     # create and configure the app
+#     app = Flask(__name__, instance_relative_config=True)
+#     app.config.from_mapping(
+#         SECRET_KEY='dev',
+#     )
+
+#     if test_config is None:
+#         # load the instance config, if it exists, when not testing
+#         app.config.from_pyfile('config.py', silent=True)
+#     else:
+#         # load the test config if passed in
+#         app.config.from_mapping(test_config)
+
+#     # ensure the instance folder exists
+#     try:
+#         os.makedirs(app.instance_path)
+#     except OSError:
+#         pass
+
+#     views.init_app(app)
+
+#     # a simple page that says hello
+#     @app.route('/hello')
+#     def hello():
+#         return 'Hello, World!'
+
+#     return app
+import flask
+
+app = flask.Flask(__name__)
+app.secret_key = 'super secret string'
+import flask_login
+
+login_manager = flask_login.LoginManager()
+
+login_manager.init_app(app)
+views.init_app(app)
+# Our mock database.
+users = {'foo@bar.tld': {'password': 'secret'}}
+
+class User(flask_login.UserMixin):
+    pass
 
 
+@login_manager.user_loader
+def user_loader(email):
+    if email not in users:
+        return
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-    )
-
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
-
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    views.init_app(app)
+    user = User()
+    user.id = email
+    return user
 
 
+@login_manager.request_loader
+def request_loader(request):
+    email = request.form.get('email')
+    if email not in users:
+        return
 
-    @login_manager.request_loader
-    def load_user(request):
-        token = request.headers.get('Authorization')
-        if token is None:
-            token = request.args.get('token')
+    user = User()
+    user.id = email
 
-        if token is not None:
-            username,password = token.split(":") # naive token
-            user_entry = User.get(username)
-            if (user_entry is not None):
-                user = User(user_entry[0],user_entry[1])
-                if (user.password == password):
-                    return user
-        return None
-    @app.route("/",methods=["GET"])
-    def index():
-        return Response(response="Hello World!",status=200)
+    # DO NOT ever store passwords in plaintext and always compare password
+    # hashes using constant-time comparison!
+    user.is_authenticated = request.form['password'] == users[email]['password']
+
+    return user
+
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if flask.request.method == 'GET':
+#         return '''
+#                <form action='login' method='POST'>
+#                 <input type='text' name='email' id='email' placeholder='email'/>
+#                 <input type='password' name='password' id='password' placeholder='password'/>
+#                 <input type='submit' name='submit'/>
+#                </form>
+#                '''
+
+#     email = flask.request.form['email']
+#     if flask.request.form['password'] == users[email]['password']:
+#         user = User()
+#         user.id = email
+#         flask_login.login_user(user)
+#         return flask.redirect(flask.url_for('protected'))
+
+#     return 'Bad login'
+
+def Patients(conn):
+    return execute(conn, "SELECT d.Doc_email, d.Doc_password FROM Doctor AS d")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return '''
+               <form action='login' method='POST'>
+                <input type='text' name='email' id='email' placeholder='email'/>
+                <input type='password' name='password' id='password' placeholder='password'/>
+                <input type='submit' name='submit'/>
+               </form>
+               '''
+
+    with get_db() as conn:
+        rows = Patients(conn)
+        email = request.form['email']
+        for i in range(len(rows)):
+            doc = rows[i]
+            print(doc)
+            if request.form['password'] == doc["Doc_password"] and email == doc["Doc_email"]:
+                user = User()
+                user.id = email
+                flask_login.login_user(user)
+                return redirect(url_for('protected'))
+
+        return 'Bad login'
 
 
-    @app.route("/protected/",methods=["GET"])
-    @login_required
-    def protected():
-        return Response(response="Hello Protected World!", status=200)
-    # login_manager = flask_login.LoginManager()
-
-    # login_manager.init_app(app)
-    # class User(flask_login.UserMixin):
-    #     pass
+@app.route('/protected')
+@login_required
+def index():
+    return render_template("index.html")
 
 
-    # @login_manager.user_loader
-    # def user_loader(email):
-    #     if email not in users:
-    #         return
+# @app.route('/protected')
+# @flask_login.login_required
+# def protected():
+#     return 'Logged in as: ' + flask_login.current_user.id
 
-    #     user = User()
-    #     user.id = email
-    #     return user
+@app.route('/logout')
+def logout():
+    flask_login.logout_user()
+    return 'Logged out'
 
-
-    # @login_manager.request_loader
-    # def request_loader(request):
-    #     email = request.form.get('email')
-    #     if email not in users:
-    #         return
-
-    #     user = User()
-    #     user.id = email
-
-    #     # DO NOT ever store passwords in plaintext and always compare password
-    #     # hashes using constant-time comparison!
-    #     user.is_authenticated = request.form['password'] == users[email]['password']
-
-    #     return user
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
-    return app
-
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return redirect(url_for('login'))
