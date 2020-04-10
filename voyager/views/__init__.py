@@ -9,7 +9,6 @@ from voyager.views import appointments
 from voyager.views import view_med_history
 from voyager.views import login
 from voyager.views import add_patient
-from voyager.views import add_doctor
 from voyager.views import add_nurse
 
 # from voyager.views import boats_by_popularity
@@ -28,7 +27,6 @@ appointments.views(blueprint)
 view_med_history.views(blueprint)
 login.views(blueprint)
 add_patient.views(blueprint)
-add_doctor.views(blueprint)
 add_nurse.views(blueprint)
 
 # boats_by_popularity.views(blueprint)
