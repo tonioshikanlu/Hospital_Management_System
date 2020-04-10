@@ -15,7 +15,9 @@ CREATE TABLE IF NOT EXISTS Doctor (
   did INTEGER PRIMARY KEY AUTOINCREMENT,
   pid INTEGER NOT NULL,
   Doc_name TEXT,
-  Doc_number INTEGER
+  Doc_number INTEGER,
+  Doc_email TEXT,
+  Doc_password TEXT
 );
 
 CREATE TABLE IF NOT EXISTS Nurse (
