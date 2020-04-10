@@ -13,4 +13,4 @@ def views(bp):
     def _appointments():
         with get_db() as conn:
             rows = Appointments(conn)
-        return render_template("table.html", name="appointments", rows=rows)
+        return render_template("table.html", name="Appointments", rows=rows)

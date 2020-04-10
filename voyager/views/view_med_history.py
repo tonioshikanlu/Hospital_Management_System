@@ -22,4 +22,4 @@ def views(bp):
 	def _get_all_med_history():	
 		with get_db() as conn:
 			rows = med_history(conn)
-		return render_template("table.html", name="Patients", rows=rows)
+		return render_template("table.html", name="Patient", rows=rows)
