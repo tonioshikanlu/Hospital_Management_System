@@ -116,7 +116,7 @@ def index():
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
-    return 'Logged out'
+    return render_template("logout.html")
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
