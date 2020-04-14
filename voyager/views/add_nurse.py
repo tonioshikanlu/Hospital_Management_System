@@ -12,12 +12,11 @@ from voyager.validate import validate_field, render_errors
 from voyager.validate import NAME_RE, INT_RE, DATE_RE
 
 def add_nurse(conn):
-    InputDid = request.args.get('doctor-id')
     InputName = request.args.get('nurse-name')
     InputNumber = request.args.get('n-phone-no')
-    if InputDid == None or InputName == None or InputNumber == None:
+    if InputName == None or InputNumber == None:
         return
-    return execute(conn, "INSERT INTO Nurse (did, N_name, N_number) VALUES ((?), (?), (?));", (InputDid,InputName,InputNumber))
+    return execute(conn, "INSERT INTO Nurse ( N_name, N_number) VALUES ((?), (?));", (InputName, InputNumber))
 
 def views(bp):
 	@bp.route("/nurses/add",  methods=['GET', 'POST'])

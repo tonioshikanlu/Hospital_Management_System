@@ -15,7 +15,8 @@ def med_history(conn):
 	userInput = request.args.get('medical-history')
 	print(userInput)
 	#Fix return statement
-	return execute(conn, "SELECT DISTINCT p.P_name, p.medical_history FROM Patient AS p WHERE p.P_name = (?)", (userInput,))
+	return execute(conn, "SELECT DISTINCT p.P_name AS Patient_Name, p.medical_history as Medical_History\
+		FROM Patient AS p WHERE p.P_name = (?)", (userInput,))
 
 def views(bp):
 	@bp.route("/patients/view-med-history",  methods=['GET', 'POST'])
