@@ -12,6 +12,7 @@ from voyager.views import add_patient
 from voyager.views import add_nurse
 from voyager.views import add_appointments
 from voyager.views import edit_appointments
+from voyager.views import delete_appointments
 
 # from voyager.views import boats_by_popularity
 # from voyager.views import sailors_who_sailed
@@ -32,6 +33,7 @@ add_patient.views(blueprint)
 add_nurse.views(blueprint)
 add_appointments.views(blueprint)
 edit_appointments.views(blueprint)
+delete_appointments.views(blueprint)
 
 # boats_by_popularity.views(blueprint)
 # sailors_who_sailed.views(blueprint)

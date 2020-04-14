@@ -12,3 +12,25 @@ To start, type this in terminal under project directory:
 
 ### `flask run`
 
+
+###Other useful instructions
+Error
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+Use:
+
+### `rm test.db`
+
+### `python3 init_db.py`
+
+### `export FLASK_APP=voyager`
+
+### `export FLASK_ENV=development`
+
+
+
+
+Try flask run again
+
