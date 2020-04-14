@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS Patient (
   pid INTEGER PRIMARY KEY AUTOINCREMENT,
   P_name TEXT,
@@ -33,25 +32,3 @@ CREATE TABLE IF NOT EXISTS Appointments (
   Appointment_type TEXT,
   room_number INTEGER
 );
-
-
-
--- CREATE TABLE IF NOT EXISTS Sailors (
---   sid INTEGER PRIMARY KEY AUTOINCREMENT,
---   name TEXT,
---   age INTEGER,
---   experience INTEGER -- years of experience
--- );
-
--- CREATE TABLE IF NOT EXISTS Boats (
---   bid INTEGER PRIMARY KEY AUTOINCREMENT,
---   name TEXT,
---   color TEXT
--- );
-
--- CREATE TABLE IF NOT EXISTS Voyages (
---   sid INTEGER NOT NULL,
---   bid INTEGER NOT NULL,
---   date_of_voyage DATE NOT NULL,
---   PRIMARY KEY(sid, bid, date_of_voyage)
--- );

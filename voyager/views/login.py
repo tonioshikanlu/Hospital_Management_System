@@ -36,25 +36,12 @@ def views(bp):
 		    email = request.form['email']
 		    for i in range(len(rows)):
 		    	doc = rows[i]
-		    	#print(doc["Doc_email"])
 		    	if request.form['password'] == doc["Doc_password"] and email == doc["Doc_email"]:
-			        # user = User()
 			        c_user = email
 			        boo.c_user = c_user
 			        user()
-			        #print(c_user)
-			        # print(c_user)
-			        # flask_login.login_user(user)
 			        return render_template("index.html")
 
 		    return 'Unauthorized login'
 def user():
 	return boo.c_user
-
-	# @bp.route('/')
-	# def index():
-	# 	print(email)
-	# 	if not c_user:
-	# 		return render_template("form_error.html")
-	# 	else:
-	# 		return render_template("index.html")

@@ -24,5 +24,3 @@ def views(bp):
 		with get_db() as conn:
 			rows = add_nurse(conn)
 		return render_template("add_nurse.html", name="Nurses")
-
-

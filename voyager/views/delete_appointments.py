@@ -13,10 +13,7 @@ from voyager.validate import NAME_RE, INT_RE, DATE_RE
 
 from . import login
 
-
-def Delete_appointments(conn):
-    
-    #currentDoctor = str(login.user())
+def Delete_appointments(conn):    
     aid = request.args.get('aid')
     Doctor_name = request.args.get('doc-name')
     print( aid, "  ", Doctor_name )
@@ -31,7 +28,3 @@ def views(bp):
         with get_db() as conn:
             rows = Delete_appointments(conn)
         return render_template("delete_appointments.html", name="Delete Appointments", rows=rows)
-
-
-
-

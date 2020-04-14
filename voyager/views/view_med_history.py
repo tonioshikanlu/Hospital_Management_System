@@ -14,7 +14,6 @@ from voyager.validate import NAME_RE, INT_RE, DATE_RE
 def med_history(conn):
 	userInput = request.args.get('medical-history')
 	print(userInput)
-	#Fix return statement
 	return execute(conn, "SELECT DISTINCT p.P_name AS Patient_Name, p.medical_history as Medical_History\
 		FROM Patient AS p WHERE p.P_name = (?)", (userInput,))
 

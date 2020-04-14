@@ -1,7 +1,6 @@
 
 from flask import Blueprint
 
-# from voyager.views import index
 from voyager.views import patients
 from voyager.views import doctors
 from voyager.views import nurses
@@ -14,15 +13,7 @@ from voyager.views import add_appointments
 from voyager.views import edit_appointments
 from voyager.views import delete_appointments
 
-# from voyager.views import boats_by_popularity
-# from voyager.views import sailors_who_sailed
-# from voyager.views import given_sail_date
-# from voyager.views import given_color
-
-
-
 blueprint = Blueprint('views', __name__)
-# index.views(blueprint)
 patients.views(blueprint)
 doctors.views(blueprint)
 nurses.views(blueprint)
@@ -35,14 +26,6 @@ add_appointments.views(blueprint)
 edit_appointments.views(blueprint)
 delete_appointments.views(blueprint)
 
-# boats_by_popularity.views(blueprint)
-# sailors_who_sailed.views(blueprint)
-# given_sail_date.views(blueprint)
-# given_color.views(blueprint)
-
-
-
 def init_app(app):
     app.register_blueprint(blueprint)
     app.add_url_rule('/', endpoint='index')
-

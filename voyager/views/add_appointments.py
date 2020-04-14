@@ -32,5 +32,3 @@ def views(bp):
 		with get_db() as conn:
 			rows = add_appointment(conn)
 		return render_template("add_appointments.html", name="Appointments")
-
-

@@ -14,9 +14,7 @@ from voyager.validate import NAME_RE, INT_RE, DATE_RE
 from . import login
 
 
-def Edit_appointments(conn):
-    
-    #currentDoctor = str(login.user())
+def Edit_appointments(conn):    
     aid = request.args.get('aid')
     Appointment_date = request.args.get('appointment-date')
     Appointment_time = request.args.get('appointment-time')
@@ -37,7 +35,3 @@ def views(bp):
         with get_db() as conn:
             rows = Edit_appointments(conn)
         return render_template("edit_appointments.html", name="Reschedule Appointments", rows=rows)
-
-
-
-
