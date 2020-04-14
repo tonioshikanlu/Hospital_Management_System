@@ -5,9 +5,14 @@ from flask import request
 from flask import escape
 
 from voyager.db import get_db, execute
+from . import login
 
 def Patients(conn):
-    return execute(conn, "SELECT p.pid, p.did, p.P_name, p.DOB, p.Gender, p.P_number, p.P_address, p.medical_history, p.aid FROM Patient AS p")
+	currentDoctor = str(login.user())
+	return execute(conn, "SELECT p.pid AS ID , p.P_name AS Name, p.DOB, p.Gender as Gender,\
+		p.P_number as Phone_Number, p.P_address AS Address, p.medical_history as Medical_History \
+    	FROM Patient AS p Join Appointments as a on p.pid = a.pid Join Doctor as d on a.did = d.did\
+    	Where d.Doc_email = (?) ", (currentDoctor,))
 
 def views(bp):
     @bp.route("/patients")

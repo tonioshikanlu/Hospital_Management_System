@@ -11,13 +11,14 @@ import config
 
 class User(UserMixin):
     # proxy for a database of users
-        pass
+    c_user = None
+    def __init__(self):        
+    	User.c_user = None
 
-
-c_user = None
 def Patients(conn):
     return execute(conn, "SELECT d.Doc_email, d.Doc_password FROM Doctor AS d")
 
+boo = User()
 def views(bp):
 	@bp.route('/login', methods=['GET', 'POST'])
 	def login():
@@ -35,16 +36,20 @@ def views(bp):
 		    email = request.form['email']
 		    for i in range(len(rows)):
 		    	doc = rows[i]
-		    	print(doc)
+		    	#print(doc["Doc_email"])
 		    	if request.form['password'] == doc["Doc_password"] and email == doc["Doc_email"]:
 			        # user = User()
 			        c_user = email
+			        boo.c_user = c_user
+			        user()
+			        #print(c_user)
 			        # print(c_user)
 			        # flask_login.login_user(user)
 			        return render_template("index.html")
 
 		    return 'Unauthorized login'
-
+def user():
+	return boo.c_user
 
 	# @bp.route('/')
 	# def index():

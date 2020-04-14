@@ -11,7 +11,7 @@ from voyager.validate import NAME_RE, INT_RE, DATE_RE
 
 
 def Doctors(conn):
-    return execute(conn, "SELECT d.did, d.pid, d.Doc_name, d.Doc_number FROM Doctor AS d")
+    return execute(conn, "SELECT d.did AS ID, d.Doc_name as Name, d.Doc_number AS Phone_Number FROM Doctor AS d")
 
 def views(bp):
     @bp.route("/doctors")
