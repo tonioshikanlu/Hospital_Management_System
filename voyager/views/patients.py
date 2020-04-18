@@ -10,7 +10,7 @@ from . import login
 def Patients(conn):
 	currentDoctor = str(login.user())
 	return execute(conn, "SELECT p.pid AS ID , p.P_name AS Name, p.DOB, p.Gender as Gender,\
-		p.P_number as Phone_Number, p.P_address AS Address \
+		p.P_number as Phone_Number, p.P_address AS Address, p.medical_history AS Medical_history\
     	FROM Patient AS p Join Appointments as a on p.pid = a.pid Join Doctor as d on a.did = d.did\
     	Where d.Doc_email = (?) ", (currentDoctor,))
 
